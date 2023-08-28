@@ -5,6 +5,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import { SanityDocument } from '@sanity/client';
 import { PortableText } from '@portabletext/react';
 import { client } from '@/sanity/lib/client';
+import urlFor from '@/sanity/lib/url.for';
 
 const builder = imageUrlBuilder(client);
 
@@ -15,10 +16,11 @@ export default function Post({ post }: { post: SanityDocument }) {
       {post?.mainImage ? (
         <Image
           className='float-left m-0 w-1/3 mr-4 rounded-lg'
-          src={builder.image(post.mainImage).width(300).height(300).url()}
+          src={urlFor(post.mainImage).url()}
           width={300}
           height={300}
           alt={post?.mainImage?.alt}
+          priority
         />
       ) : null}
       {post?.body ? <PortableText value={post.body} /> : null}
