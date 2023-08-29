@@ -14,6 +14,7 @@ export default async function Page({ params }: { params: any }) {
   if (isDraftMode && token) {
     return (
       <PreviewProvider token={token}>
+        <div>I&apos;m in preview mode.</div>
         <PreviewPost post={post} />
       </PreviewProvider>
     );
