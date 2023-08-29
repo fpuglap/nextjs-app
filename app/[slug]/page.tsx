@@ -1,9 +1,8 @@
 import { SanityDocument } from '@sanity/client';
 import { draftMode } from 'next/headers';
 import Post from '@/app/_components/post';
-import { postPathsQuery, postQuery } from '@/sanity/lib/queries';
+import { postQuery } from '@/sanity/lib/queries';
 import { sanityFetch, token } from '@/sanity/lib/sanity.fetch';
-import { client } from '@/sanity/lib/client';
 import PreviewProvider from '@/app/_components/preview.provider';
 import PreviewPost from '@/app/_components/preview.post';
 
