@@ -1,6 +1,6 @@
 import { SanityDocument } from '@sanity/client';
 import { draftMode } from 'next/headers';
-import Post from '@/app/_components/post';
+import Post from '@/app/_components/Post';
 import { postQuery } from '@/sanity/lib/queries';
 import { sanityFetch, token } from '@/sanity/lib/sanity.fetch';
 import PreviewProvider from '@/app/_components/preview.provider';

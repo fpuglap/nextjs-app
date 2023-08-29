@@ -1,5 +1,5 @@
 import { SanityDocument } from 'next-sanity';
-import Posts from '@/app/_components/posts';
+import Posts from '@/app/_components/Posts';
 import { postsQuery } from '@/sanity/lib/queries';
 import { sanityFetch, token } from '@/sanity/lib/sanity.fetch';
 import { draftMode } from 'next/headers';
