@@ -12,10 +12,10 @@ import { SanityDocument } from 'sanity';
 function getPreviewUrl() {
   if (process.env.NODE_ENV === 'development') {
     // Redirect to the development URL
-    return `http://localhost:3000/api/preview`;
+    return `http://localhost:3000`;
   } else {
     // Redirect to the production URL
-    return `https://nextjs-app-steel-one.vercel.app/api/preview`;
+    return `https://nextjs-app-steel-one.vercel.app`;
   }
 }
 
@@ -32,7 +32,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
           .options({
             url: (doc: { slug: { current: any } }) =>
               doc?.slug?.current
-                ? `${getPreviewUrl()}?slug=${doc.slug.current}`
+                ? `${getPreviewUrl()}/${doc.slug.current}`
                 : getPreviewUrl(),
           })
           .title('Preview'),
