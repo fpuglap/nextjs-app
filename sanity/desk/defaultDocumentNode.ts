@@ -32,8 +32,8 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
           .options({
             url: (doc: { slug: { current: any } }) =>
               doc?.slug?.current
-                ? `${getPreviewUrl()}/${doc.slug.current}`
-                : getPreviewUrl(),
+                ? `${getPreviewUrl()}/api/preview/${doc.slug.current}`
+                : `${getPreviewUrl()}/api/preview`,
           })
           .title('Preview'),
       ]);
