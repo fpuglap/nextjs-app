@@ -1,5 +1,23 @@
 import { DefaultDocumentNodeResolver } from 'sanity/desk';
 import Iframe from 'sanity-plugin-iframe-pane';
+import { SanityDocument } from 'sanity';
+
+// Customise this function to show the correct URL based on the current document
+// function getPreviewUrl(doc: SanityDocument) {
+//   return doc?.slug?.current
+//     ? `${window.location.host}/${doc.slug.current}`
+//     : `${window.location.host}`;
+// }
+
+function getPreviewUrl() {
+  if (process.env.NODE_ENV === 'development') {
+    // Redirect to the development URL
+    return `http://localhost:3000/api/preview`;
+  } else {
+    // Redirect to the production URL
+    return `https://nextjs-app-steel-one.vercel.app/api/preview`;
+  }
+}
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (
   S,
@@ -12,11 +30,10 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
         S.view
           .component(Iframe)
           .options({
-            url: `http://localhost:3000/api/preview`,
-            URL: (doc: { slug: { current: any } }) =>
+            url: (doc: { slug: { current: any } }) =>
               doc?.slug?.current
-                ? `http://localhost:3000/api/preview?slug=${doc.slug.current}`
-                : `http://localhost:3000/api/preview`,
+                ? `${getPreviewUrl()}?slug=${doc.slug.current}`
+                : getPreviewUrl(),
           })
           .title('Preview'),
       ]);
