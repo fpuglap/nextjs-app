@@ -30,10 +30,11 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
         S.view
           .component(Iframe)
           .options({
-            url: (doc: { slug: { current: any } }) =>
-              doc?.slug?.current
-                ? `${getPreviewUrl()}/api/preview/${doc.slug.current}`
-                : `${getPreviewUrl()}/api/preview`,
+            url: `${getPreviewUrl()}/api/preview`,
+            // url: (doc: { slug: { current: any } }) =>
+            //   doc?.slug?.current
+            //     ? `${getPreviewUrl()}/api/preview/${doc.slug.current}`
+            //     : `${getPreviewUrl()}/api/preview`,
           })
           .title('Preview'),
       ]);
