@@ -10,13 +10,9 @@ import { SanityDocument } from 'sanity';
 // }
 
 function getPreviewUrl() {
-  if (process.env.NODE_ENV === 'development') {
-    // Redirect to the development URL
-    return `http://localhost:3000`;
-  } else {
-    // Redirect to the production URL
-    return `https://nextjs-app-steel-one.vercel.app`;
-  }
+  return process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://nextjs-app-steel-one.vercel.app';
 }
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (
@@ -31,10 +27,6 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
           .component(Iframe)
           .options({
             url: `${getPreviewUrl()}/api/preview`,
-            // url: (doc: { slug: { current: any } }) =>
-            //   doc?.slug?.current
-            //     ? `${getPreviewUrl()}/api/preview/${doc.slug.current}`
-            //     : `${getPreviewUrl()}/api/preview`,
           })
           .title('Preview'),
       ]);
